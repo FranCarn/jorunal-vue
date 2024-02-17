@@ -4,13 +4,18 @@
       <input type="text" class="form-control" placeholder="Search entry" />
     </div>
     <div class="entry-scroll-area">
-      <h2 v-for="item in 100" :key="item">Entry</h2>
+      <h2 v-for="item in 100" :key="item"><Entry /></h2>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { defineAsyncComponent } from "vue";
+export default {
+  components: {
+    Entry: () => defineAsyncComponent(() => import("./EntryComponent")),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
