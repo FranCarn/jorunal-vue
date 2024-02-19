@@ -10,10 +10,8 @@
 import { defineAsyncComponent } from "vue";
 export default {
   components: {
-    Navbar: () =>
-      defineAsyncComponent(() => import("../components/NavbarDaybook")),
-    EntryList: () =>
-      defineAsyncComponent(() => import("../components/EntryList")),
+    Navbar: defineAsyncComponent(() => import("../components/NavbarDaybook")),
+    EntryList: defineAsyncComponent(() => import("../components/EntryList")),
   },
 };
 </script>

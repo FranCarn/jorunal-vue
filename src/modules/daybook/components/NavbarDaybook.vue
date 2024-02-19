@@ -1,13 +1,12 @@
 <template>
   <nav class="navbar bg-primary">
-    <a class="navbar-brnad text-white">
+    <a class="navbar-brand text-white d-flex align-items-center">
       <img
         src="@/assets/logo.png"
         alt="logo"
-        height="24"
+        height="26"
         class="d-inline-block align-text-top mx-2"
-      />
-      Daybook
+      />Daybook
     </a>
     <div class="d-flex">
       <button class="btn btn-outline-info mx-2">

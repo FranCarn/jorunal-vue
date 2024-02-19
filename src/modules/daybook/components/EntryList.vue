@@ -13,7 +13,7 @@
 import { defineAsyncComponent } from "vue";
 export default {
   components: {
-    Entry: () => defineAsyncComponent(() => import("./EntryComponent")),
+    Entry: defineAsyncComponent(() => import("./EntryComponent")),
   },
 };
 </script>
@@ -24,7 +24,18 @@ export default {
   height: calc(100vh - 56px);
 }
 .entry-scroll-area {
-  height: calc(100vh - 110px);
-  overflow: scroll;
+  height: calc(100vh - 102px);
+  overflow-y: scroll;
+  overflow-x: none;
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: #2c3e50;
+    border-radius: 15px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: #198754;
+    border-radius: 15px;
+  }
 }
 </style>
