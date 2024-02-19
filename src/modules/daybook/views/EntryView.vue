@@ -24,7 +24,7 @@
     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx3N0NFE09IZLopMGh3drYr6gux59S-C8GL02d8SOA7Q&s"
     alt="entry-picture"
   />
-  <Fab />
+  <Fab icon="fa-save" />
 </template>
 
 <script>

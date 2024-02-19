@@ -1,9 +1,18 @@
 <template>
-  <button class="btn btn-primary"><i class="fa fa-md fa-plus"></i></button>
+  <button class="btn btn-primary">
+    <i class="fa fa-lg" :class="icon"></i>
+  </button>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    icon: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
