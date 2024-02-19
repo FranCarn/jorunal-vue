@@ -15,12 +15,14 @@ specifiers:
   sass-loader: '10'
   vue: ^3.2.13
   vue-router: ^4.0.3
+  vuex: ^4.0.2
 
 dependencies:
   bootstrap: 5.3.2
   core-js: 3.36.0
   vue: 3.4.19
   vue-router: 4.2.5_vue@3.4.19
+  vuex: 4.0.2_vue@3.4.19
 
 devDependencies:
   '@babel/core': 7.23.9
@@ -6822,6 +6824,15 @@ packages:
       '@vue/runtime-dom': 3.4.19
       '@vue/server-renderer': 3.4.19_vue@3.4.19
       '@vue/shared': 3.4.19
+
+  /vuex/4.0.2_vue@3.4.19:
+    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
+    peerDependencies:
+      vue: ^3.0.2
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      vue: 3.4.19
+    dev: false
 
   /watchpack/2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}
