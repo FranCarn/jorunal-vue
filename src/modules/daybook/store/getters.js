@@ -1,7 +1,6 @@
 export const getEntriesByTerm =
   (state) =>
   (term = "") => {
-    console.log(term);
     if (!term) return state.entries;
 
     return state.entries.filter((entry) =>
