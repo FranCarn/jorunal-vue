@@ -1,32 +1,34 @@
 <template>
-  <div class="entry-title d-flex justify-content-between p-2">
-    <div>
-      <span class="text-success fs-3 fw-bold">{{ day }}</span>
-      <span class="fs-3 mx-1">{{ month }}</span>
-      <span class="fs-4 mx-2 fw-light">{{ yearDay }}</span>
-    </div>
+  <template v-if="entry">
+    <div class="entry-title d-flex justify-content-between p-2">
+      <div>
+        <span class="text-success fs-3 fw-bold">{{ day }}</span>
+        <span class="fs-3 mx-1">{{ month }}</span>
+        <span class="fs-4 mx-2 fw-light">{{ yearDay }}</span>
+      </div>
 
-    <div>
-      <button class="btn btn-danger mx-2">
-        Delete <i class="fa fa-trash-alt"></i>
-      </button>
-      <button class="btn btn-primary">
-        Upload <i class="fa fa-upload"></i>
-      </button>
+      <div>
+        <button class="btn btn-danger mx-2">
+          Delete <i class="fa fa-trash-alt"></i>
+        </button>
+        <button class="btn btn-primary">
+          Upload <i class="fa fa-upload"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <hr />
-  <div class="d-flex flex-column px-3 h-75">
-    <textarea
-      placeholder="What happened today?"
-      v-model="entry.text"
-    ></textarea>
-  </div>
-  <img
-    class="img-thumbnail"
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx3N0NFE09IZLopMGh3drYr6gux59S-C8GL02d8SOA7Q&s"
-    alt="entry-picture"
-  />
+    <hr />
+    <div class="d-flex flex-column px-3 h-75">
+      <textarea
+        placeholder="What happened today?"
+        v-model="entry.text"
+      ></textarea>
+    </div>
+    <img
+      class="img-thumbnail"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx3N0NFE09IZLopMGh3drYr6gux59S-C8GL02d8SOA7Q&s"
+      alt="entry-picture"
+    />
+  </template>
   <Fab icon="fa-save" />
 </template>
 
@@ -44,10 +46,16 @@ export default {
   created() {
     this.loadEntry();
   },
+
   data() {
     return {
       entry: null,
     };
+  },
+  watch: {
+    id() {
+      this.loadEntry();
+    },
   },
   computed: {
     ...mapGetters("journal", ["getEntryById"]),
