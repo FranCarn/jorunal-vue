@@ -7,6 +7,8 @@ export const getEntriesByTerm =
       entry.text.toLowerCase().includes(term.toLowerCase())
     );
   };
-export const getEntryById = (state) => {
-  return state;
-};
+export const getEntryById =
+  (state) =>
+  (id = "") => {
+    return state.entries.find((entry) => entry.id === id);
+  };
