@@ -35,7 +35,7 @@
 <script>
 import { defineAsyncComponent } from "vue";
 import { mapGetters } from "vuex";
-import { getDayMonthYear } from "../helpers/getDayMonthYear";
+import getDayMonthYear from "../helpers/getDayMonthYear";
 export default {
   props: {
     id: {
@@ -60,14 +60,16 @@ export default {
   computed: {
     ...mapGetters("journal", ["getEntryById"]),
     day() {
-      return getDayMonthYear(this.entry.date).day;
+      const { day } = getDayMonthYear(this.entry.date);
+      return day;
     },
     month() {
       const { month } = getDayMonthYear(this.entry.date);
       return month;
     },
     yearDay() {
-      return getDayMonthYear(this.entry.date).yearDay;
+      const { yearDay } = getDayMonthYear(this.entry.date);
+      return yearDay;
     },
   },
   methods: {
