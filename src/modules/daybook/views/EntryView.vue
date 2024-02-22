@@ -1,9 +1,9 @@
 <template>
   <div class="entry-title d-flex justify-content-between p-2">
     <div>
-      <span class="text-success fs-3 fw-bold">15</span>
-      <span class="fs-3 mx-1">June</span>
-      <span class="fs-4 mx-2 fw-light">2025</span>
+      <span class="text-success fs-3 fw-bold">{{ day }}</span>
+      <span class="fs-3 mx-1">{{ month }}</span>
+      <span class="fs-4 mx-2 fw-light">{{ yearDay }}</span>
     </div>
 
     <div>
@@ -17,7 +17,10 @@
   </div>
   <hr />
   <div class="d-flex flex-column px-3 h-75">
-    <textarea placeholder="What happened today?" />
+    <textarea
+      placeholder="What happened today?"
+      v-model="entry.text"
+    ></textarea>
   </div>
   <img
     class="img-thumbnail"
@@ -30,6 +33,7 @@
 <script>
 import { defineAsyncComponent } from "vue";
 import { mapGetters } from "vuex";
+import { getDayMonthYear } from "../helpers/getDayMonthYear";
 export default {
   props: {
     id: {
@@ -38,14 +42,31 @@ export default {
     },
   },
   created() {
-    console.log(this.loadEntry());
+    this.loadEntry();
+  },
+  data() {
+    return {
+      entry: null,
+    };
   },
   computed: {
     ...mapGetters("journal", ["getEntryById"]),
+    day() {
+      return getDayMonthYear(this.entry.date).day;
+    },
+    month() {
+      const { month } = getDayMonthYear(this.entry.date);
+      return month;
+    },
+    yearDay() {
+      return getDayMonthYear(this.entry.date).yearDay;
+    },
   },
   methods: {
     loadEntry() {
-      return this.getEntryById(this.id);
+      const entry = this.getEntryById(this.id);
+      if (!entry) return this.$router.push({ name: "no-entry" });
+      this.entry = entry;
     },
   },
   components: {
