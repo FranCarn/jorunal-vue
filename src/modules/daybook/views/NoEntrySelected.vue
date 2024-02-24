@@ -2,7 +2,10 @@
   <div class="d-flex justify-content-center">
     <h1 class="align-self-center">Nothing selected</h1>
   </div>
-  <Fab icon="fa-plus" />
+  <Fab
+    icon="fa-plus"
+    @on:click="$router.push({ name: 'entry', params: { id: 'new' } })"
+  />
 </template>
 
 <script>
@@ -12,6 +15,7 @@ export default {
   components: {
     Fab: defineAsyncComponent(() => import("../components/FabIcon")),
   },
+  methods: {},
 };
 </script>
 

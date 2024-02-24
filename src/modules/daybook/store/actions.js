@@ -15,8 +15,16 @@ export const loadEntries = async ({ commit }) => {
     throw new Error("Canno't connect with backend");
   }
 };
-export const updateEntry = async ({ commit }) => {
-  console.log(commit);
+export const updateEntry = async ({ commit }, entry) => {
+  const dataToSend = { ...entry };
+  delete dataToSend.id;
+
+  try {
+    await journalApi.put(`/entries/${entry.id}.json`, dataToSend);
+    commit("updateEntry", entry);
+  } catch (error) {
+    throw new Error("Canno't connect with backend");
+  }
 };
 export const createEntry = async ({ commit }) => {
   console.log(commit);

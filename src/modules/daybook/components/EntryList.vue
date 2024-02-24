@@ -8,6 +8,14 @@
         v-model="term"
       />
     </div>
+    <div class="mt-2 d-flex flex-column">
+      <button
+        class="btn btn-primary mx-3"
+        @click="$router.push({ name: 'entry', params: { id: 'new' } })"
+      >
+        New Entry <i class="fa fa-plus-circle"></i>
+      </button>
+    </div>
     <div class="entry-scroll-area">
       <Entry v-for="entry in entriesByTerm" :key="entry.id" :entry="entry" />
     </div>
@@ -41,8 +49,8 @@ export default {
   height: calc(100vh - 56px);
 }
 .entry-scroll-area {
-  height: calc(100vh - 102px);
-  overflow-y: scroll;
+  height: calc(100vh - 103px);
+  overflow-y: auto;
   overflow-x: none;
   &::-webkit-scrollbar {
     width: 8px;
