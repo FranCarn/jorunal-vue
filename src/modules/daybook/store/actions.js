@@ -3,7 +3,14 @@ import journalApi from "@/api/journalApi";
 export const loadEntries = async ({ commit }) => {
   try {
     const { data } = await journalApi.get("/entries.json");
-    console.log(data);
+    const entries = [];
+    for (let id of Object.keys(data)) {
+      entries.push({
+        id,
+        ...data[id],
+      });
+    }
+    commit("setEntries", entries);
   } catch (error) {
     throw new Error("Canno't connect with backend");
   }
