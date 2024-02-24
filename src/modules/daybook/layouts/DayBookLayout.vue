@@ -8,10 +8,17 @@
 
 <script>
 import { defineAsyncComponent } from "vue";
+import { mapActions } from "vuex";
 export default {
   components: {
     Navbar: defineAsyncComponent(() => import("../components/NavbarDaybook")),
     EntryList: defineAsyncComponent(() => import("../components/EntryList")),
+  },
+  methods: {
+    ...mapActions("journal", ["loadEntries"]),
+  },
+  created() {
+    this.loadEntries();
   },
 };
 </script>
