@@ -2,8 +2,8 @@ export const setEntries = (state, entries) => {
   state.entries = [...state.entries, ...entries];
   state.isLoading = false;
 };
-export const addEntry = (state) => {
-  console.log(state);
+export const addEntry = (state, entry) => {
+  state.entries.unshift(entry);
 };
 export const updateEntry = (state, entry) => {
   // const updatedEntries = state.entries.map((item) => {
