@@ -8,7 +8,11 @@
       </div>
 
       <div>
-        <button class="btn btn-danger mx-2">
+        <button
+          class="btn btn-danger mx-2"
+          @click="onDeleteEntry"
+          v-if="entry.id"
+        >
           Delete <i class="fa fa-trash-alt"></i>
         </button>
         <button class="btn btn-primary">
@@ -36,7 +40,6 @@
 import { defineAsyncComponent } from "vue";
 import { mapGetters, mapActions } from "vuex";
 import getDayMonthYear from "../helpers/getDayMonthYear";
-import { createEntry } from "../store/actions";
 export default {
   props: {
     id: {
@@ -74,8 +77,8 @@ export default {
     },
   },
   methods: {
-    ...mapActions("journal", ["updateEntry"]),
-    ...mapActions("journal", ["createEntry"]),
+    ...mapActions("journal", ["updateEntry", "createEntry", "deleteEntry"]),
+
     loadEntry() {
       let entry;
       if (this.id === "new") {
@@ -96,6 +99,10 @@ export default {
         const id = await this.createEntry(this.entry);
         this.$router.push({ name: "entry", params: { id } });
       }
+    },
+    async onDeleteEntry() {
+      await this.deleteEntry(this.entry.id);
+      this.$router.push({ name: "no-entry" });
     },
   },
   components: {
