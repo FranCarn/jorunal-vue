@@ -16,6 +16,7 @@ specifiers:
   sass-loader: '10'
   vue: ^3.2.13
   vue-router: ^4.0.3
+  vue-toastify: 2.0.0-alpha.2
   vuex: ^4.0.2
 
 dependencies:
@@ -24,6 +25,7 @@ dependencies:
   core-js: 3.36.0
   vue: 3.4.19
   vue-router: 4.2.5_vue@3.4.19
+  vue-toastify: 2.0.0-alpha.2
   vuex: 4.0.2_vue@3.4.19
 
 devDependencies:
@@ -6859,6 +6861,14 @@ packages:
   /vue-template-es2015-compiler/1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
     dev: true
+
+  /vue-toastify/2.0.0-alpha.2:
+    resolution: {integrity: sha512-uDVh5Q2PVK03SwQ4YjCxUM/ThhJTMz9mee01v5tKkL9AGk01dLIm4A6oXltg7rFSPuwpSvBoa/lXMWV6/s/w2Q==}
+    dependencies:
+      vue: 3.4.19
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /vue/3.4.19:
     resolution: {integrity: sha512-W/7Fc9KUkajFU8dBeDluM4sRGc/aa4YJnOYck8dkjgZoXtVsn3OeTGni66FV1l3+nvPA7VBFYtPioaGKUmEADw==}

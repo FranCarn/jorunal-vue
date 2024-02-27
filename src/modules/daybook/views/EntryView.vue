@@ -40,6 +40,8 @@
 import { defineAsyncComponent } from "vue";
 import { mapGetters, mapActions } from "vuex";
 import getDayMonthYear from "../helpers/getDayMonthYear";
+import { useToast } from "vue-toastify";
+
 export default {
   props: {
     id: {
@@ -95,13 +97,25 @@ export default {
     async saveEntry() {
       if (this.entry.id) {
         await this.updateEntry(this.entry);
+        useToast().success({
+          body: "Entry updated successfully",
+          defaultTitle: false,
+        });
       } else {
         const id = await this.createEntry(this.entry);
+        useToast().success({
+          body: "Entry created successfully",
+          defaultTitle: false,
+        });
         this.$router.push({ name: "entry", params: { id } });
       }
     },
     async onDeleteEntry() {
       await this.deleteEntry(this.entry.id);
+      useToast().info({
+        body: "Entry deleted successfully",
+        defaultTitle: false,
+      });
       this.$router.push({ name: "no-entry" });
     },
   },
