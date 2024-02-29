@@ -8,6 +8,13 @@
       </div>
 
       <div>
+        <input
+          type="file"
+          accept="image/png, image/jpeg, image/jpg"
+          @change="onSelectedImage"
+          ref="imageSelector"
+          v-show="false"
+        />
         <button
           class="btn btn-danger mx-2"
           @click="onDeleteEntry"
@@ -15,7 +22,7 @@
         >
           Delete <i class="fa fa-trash-alt"></i>
         </button>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" @click="onSelectImage">
           Upload <i class="fa fa-upload"></i>
         </button>
       </div>
@@ -27,9 +34,11 @@
         v-model="entry.text"
       ></textarea>
     </div>
+
     <img
+      v-if="localImage"
       class="img-thumbnail"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx3N0NFE09IZLopMGh3drYr6gux59S-C8GL02d8SOA7Q&s"
+      :src="localImage"
       alt="entry-picture"
     />
   </template>
@@ -56,6 +65,8 @@ export default {
   data() {
     return {
       entry: null,
+      localImage: null,
+      file: null,
     };
   },
   watch: {
@@ -117,6 +128,22 @@ export default {
         defaultTitle: false,
       });
       this.$router.push({ name: "no-entry" });
+    },
+    onSelectedImage({ target: { files } }) {
+      const file = files[0];
+      if (!file) {
+        this.localImage = null;
+        this.file = null;
+        return;
+      }
+      this.file = file;
+      const fr = new FileReader();
+      fr.onload = () => (this.localImage = fr.result);
+
+      fr.readAsDataURL = file;
+    },
+    onSelectImage() {
+      this.$refs.imageSelector.click();
     },
   },
   components: {
