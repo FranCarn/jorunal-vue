@@ -34,7 +34,12 @@
         v-model="entry.text"
       ></textarea>
     </div>
-
+    <img
+      v-if="entry.picture && !localImage"
+      class="img-thumbnail"
+      :src="entry.picture"
+      alt="entry-picture"
+    />
     <img
       v-if="localImage"
       class="img-thumbnail"
@@ -49,6 +54,7 @@
 import { defineAsyncComponent } from "vue";
 import { mapGetters, mapActions } from "vuex";
 import getDayMonthYear from "../helpers/getDayMonthYear";
+import uploadImage from "../helpers/uploadImage";
 import { useToast } from "vue-toastify";
 
 export default {
@@ -106,6 +112,8 @@ export default {
       this.entry = entry;
     },
     async saveEntry() {
+      const url = await uploadImage(this.file);
+      this.entry.picture = url;
       if (this.entry.id) {
         await this.updateEntry(this.entry);
         useToast().success({
@@ -120,6 +128,7 @@ export default {
         });
         this.$router.push({ name: "entry", params: { id } });
       }
+      this.file = null;
     },
     async onDeleteEntry() {
       await this.deleteEntry(this.entry.id);
@@ -129,7 +138,7 @@ export default {
       });
       this.$router.push({ name: "no-entry" });
     },
-    onSelectedImage({ target: { files } }) {
+    async onSelectedImage({ target: { files } }) {
       const file = files[0];
       if (!file) {
         this.localImage = null;
