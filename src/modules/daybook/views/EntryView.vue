@@ -58,6 +58,7 @@ import uploadImage from "../helpers/uploadImage";
 import { useToast } from "vue-toastify";
 
 export default {
+  name: "EntryView",
   props: {
     id: {
       type: String,
