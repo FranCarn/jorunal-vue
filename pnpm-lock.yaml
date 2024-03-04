@@ -58,6 +58,9 @@ devDependencies:
   babel-jest:
     specifier: ^27.0.6
     version: 27.5.1(@babel/core@7.23.9)
+  cloudinary:
+    specifier: ^2.0.2
+    version: 2.0.2
   eslint:
     specifier: ^7.32.0
     version: 7.32.0
@@ -3534,6 +3537,14 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    dev: true
+
+  /cloudinary@2.0.2:
+    resolution: {integrity: sha512-PQOaoM5W0jSrI1EIcnKAHenT3IMCCTbLkSWlXkXzQlkLBxsJIerinZVWebQqqpwz4etdhvlkfaXmsE9yhYc0Qw==}
+    engines: {node: '>=9'}
+    dependencies:
+      lodash: 4.17.21
+      q: 1.5.1
     dev: true
 
   /co@4.6.0:
@@ -7521,6 +7532,11 @@ packages:
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+    dev: true
+
+  /q@1.5.1:
+    resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
+    engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: true
 
   /qs@6.11.0:
