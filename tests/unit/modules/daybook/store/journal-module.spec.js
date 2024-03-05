@@ -71,11 +71,11 @@ describe("tests in Journal store module", () => {
   test("Getters: GetEntriesByTerm & GetEntriesById", () => {
     const store = createVueXStore(journalState);
     const [entry1, entry2] = journalState.entries;
-    expect(store.getters["jorunal/getEntriesByTerm"]("")).toHaveLength(2);
-    expect(store.getters["jorunal/getEntriesByTerm"]("Jest")).toHaveLength(1);
-    expect(store.getters["jorunal/getEntriesByTerm"]("Jest")).toEqual([entry2]);
+    expect(store.getters["journal/getEntriesByTerm"]("")).toHaveLength(2);
+    expect(store.getters["journal/getEntriesByTerm"]("Jest")).toHaveLength(1);
+    expect(store.getters["journal/getEntriesByTerm"]("Jest")).toEqual([entry2]);
     expect(
-      store.getters["jorunal/getEntryById"]("-NrRTT6bjp_h33CgHphU")
+      store.getters["journal/getEntryById"]("-NrRTT6bjp_h33CgHphU")
     ).toEqual(entry1);
   });
 
@@ -85,6 +85,24 @@ describe("tests in Journal store module", () => {
     const store = createVueXStore({ isLoading: true, entries: [] });
     await store.dispatch("journal/loadEntries");
 
-    expect(store.state.jorunal.entries).toHaveLength(2);
+    expect(store.state.journal.entries).toHaveLength(2);
+  });
+  test("Actions: updateEntry", async () => {
+    const store = createVueXStore(journalState);
+    const updatedEntry = {
+      id: "-NrRTT6bjp_h33CgHphU",
+      date: 1627077227978,
+      text: "Somos nuestra memoria, somos ese quimérico museo de formas inconstantes, ese montón de espejos rotos.",
+      picture:
+        "https://res.cloudinary.com/ddnuznzo6/image/upload/v1709303528/vuejournal/vkl0atdtcwhcg12vwtdh.jpg",
+      field: { a: 1 },
+      otherField: true,
+    };
+    await store.dispatch("journal/updateEntry", updatedEntry);
+    const entries = store.state.journal.entries;
+    expect(entries).toHaveLength(2);
+    expect(entries.find((item) => item.id === updatedEntry.id)).toEqual(
+      updatedEntry
+    );
   });
 });
