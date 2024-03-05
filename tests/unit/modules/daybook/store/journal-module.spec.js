@@ -19,6 +19,7 @@ describe("tests in Journal store module", () => {
     expect(isLoading).toBeFalsy();
     expect(entries).toEqual(journalState.entries);
   });
+
   // MUTATIONS
   test("Mutations: setEntries", () => {
     const store = createVueXStore({ isLoading: true, entries: [] });
@@ -65,6 +66,7 @@ describe("tests in Journal store module", () => {
       store.state.journal.entries.find((e) => e.id === mockEntry.id)
     ).toBeFalsy();
   });
+
   // GETTERS
   test("Getters: GetEntriesByTerm & GetEntriesById", () => {
     const store = createVueXStore(journalState);
@@ -75,5 +77,14 @@ describe("tests in Journal store module", () => {
     expect(
       store.getters["jorunal/getEntryById"]("-NrRTT6bjp_h33CgHphU")
     ).toEqual(entry1);
+  });
+
+  // ACTIONS
+
+  test("Actions: loadEntries", async () => {
+    const store = createVueXStore({ isLoading: true, entries: [] });
+    await store.dispatch("journal/loadEntries");
+
+    expect(store.state.jorunal.entries).toHaveLength(2);
   });
 });
