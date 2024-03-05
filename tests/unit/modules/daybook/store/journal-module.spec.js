@@ -105,4 +105,23 @@ describe("tests in Journal store module", () => {
       updatedEntry
     );
   });
+  test("Actions: createEntry & deleteEntry", async () => {
+    const store = createVueXStore(journalState);
+    const newEntry = {
+      ...journalState.entries[0],
+    };
+    delete newEntry.id;
+
+    const id = await store.dispatch("journal/createEntry", newEntry);
+    const entries = store.state.journal.entries;
+    expect(typeof id).toBe("string");
+    expect(entries).toHaveLength(3);
+    expect(entries.find((item) => item.id === id)).toBeTruthy();
+
+    await store.dispatch("journal/deleteEntry", id);
+    expect(store.state.journal.entries).toHaveLength(2);
+    expect(
+      store.state.journal.entries.find((item) => item.id === id)
+    ).toBeFalsy();
+  });
 });

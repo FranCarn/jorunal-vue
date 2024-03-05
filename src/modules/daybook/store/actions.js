@@ -38,6 +38,7 @@ export const createEntry = async ({ commit }, entry) => {
     throw new Error("Canno't connect with backend");
   }
 };
+
 export const deleteEntry = async ({ commit }, id) => {
   try {
     await journalApi.delete(`/entries/${id}.json`);
