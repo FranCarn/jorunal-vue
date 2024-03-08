@@ -51,6 +51,7 @@ describe("tests on entry view", () => {
       "journal/deleteEntry",
       "-NrRTT6bjp_h33CgHphU"
     );
+    expect(mockRouter.push).toHaveBeenCalledTimes(1);
     expect(mockRouter.push).toHaveBeenCalledWith({ name: "no-entry" });
   });
 });
