@@ -169,7 +169,6 @@ textarea {
   resize: none;
   &:focus {
     outline: none;
-    border: 1px solid $primary;
   }
 }
 img {
