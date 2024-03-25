@@ -13,7 +13,11 @@ export const createUser = async ({ commit }, user) => {
       displayName: name,
       idToken: idToken,
     });
-    // TODO: Mutation: loginUser
+
+    delete user.password;
+
+    commit("loginUser", { user, idToken, refreshToken });
+
     return { ok: true };
   } catch (error) {
     return { ok: false, message: error.response.data.error.message };
