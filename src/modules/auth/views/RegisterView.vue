@@ -51,9 +51,14 @@
 <script>
 import { ref } from "vue";
 import useAuth from "../composables/useAuth";
+import { useToast } from "vue-toastify";
+import { useRouter } from "vue-router";
+
 export default {
   setup() {
+    const { warning } = useToast();
     const { createUser } = useAuth();
+    const { push } = useRouter();
     const userForm = ref({
       email: "",
       password: "",
@@ -63,6 +68,14 @@ export default {
       userForm,
       onSubmit: async () => {
         const { ok, message } = await createUser(userForm.value);
+        if (!ok) {
+          warning({
+            body: message,
+            defaultTitle: false,
+          });
+        } else {
+          push({ name: "no-entry" });
+        }
       },
     };
   },
