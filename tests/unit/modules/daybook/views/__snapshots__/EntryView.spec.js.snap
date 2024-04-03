@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests on entry view should show entry & match snapshot 1`] = `
+<div class="entry-title d-flex justify-content-between p-2">
+  <div><span class="text-success fs-3 fw-bold">23</span><span class="fs-3 mx-1">July</span><span class="fs-4 mx-2 fw-light">2021, Saturday</span></div>
+  <div><input type="file" accept="image/png, image/jpeg, image/jpg" style="display: none;"><button class="btn btn-danger mx-2"> Delete <i class="fa fa-trash-alt"></i></button><button class="btn btn-primary"> Upload <i class="fa fa-upload"></i></button></div>
+</div>
+<hr>
+<div class="d-flex flex-column px-3 h-75"><textarea placeholder="What happened today?"></textarea></div>
+<img class="img-thumbnail" src="https://res.cloudinary.com/ddnuznzo6/image/upload/v1709303528/vuejournal/vkl0atdtcwhcg12vwtdh.jpg" alt="entry-picture">
+<!--v-if-->
+<fab-stub icon="fa-save"></fab-stub>
+`;
