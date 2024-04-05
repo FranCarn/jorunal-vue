@@ -33,6 +33,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.0.5",
     "sass": "^1.70.0",
-    "sass-loader": "10"
+    "sass-loader": "10",
+    "vue-router-mock": "^1.1.0"
   }
 }
